@@ -1,9 +1,9 @@
 from xml.dom import minidom
-from TDA import prueba
-import xml.etree.ElementTree as ET
-import os
+from prueba import Carga
 
-class tda:
+
+
+class Menu:
 
     def __init__(self):
         
@@ -24,13 +24,14 @@ class tda:
             
             if opcion == 1:
                 self.ruta = input("Ingrese la ruta del archivo: ")
+                obj = Carga()
+                obj.archivo(self.ruta)
                 print("\nSe cargo la ruta del archivo exitosamente\n")
 
             elif opcion == 2:
                 
                 print("el archivo se esta procesando\n")
-                obj = prueba()
-                obj.archivo(self.ruta)
+                
                 
             elif opcion == 3:
                 print("va a escribir el archivo\n")
@@ -47,3 +48,6 @@ class tda:
                 
             else:
                 print("\nIngresa una opcion correcta \n") 
+#C:\Users\Darkun\Desktop\IPC2\IPC2_Proyecto1_201313965\IPC2_Proyecto1_201313965\robot.xml
+obj = Menu()
+obj.menu()
