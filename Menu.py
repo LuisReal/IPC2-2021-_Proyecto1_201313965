@@ -1,7 +1,6 @@
 from xml.dom import minidom
 from Archivo import Carga
-
-
+from ListaVertical import Lista
 
 class Menu:
 
@@ -9,6 +8,9 @@ class Menu:
         
         self.archivo = ""
         self.ruta = ""
+        self.nombre_terreno = ""
+        self.obj = ""
+        self.obj_Lista = ""
 
     def menu(self): 
 
@@ -24,13 +26,17 @@ class Menu:
             
             if opcion == 1:
                 self.ruta = input("Ingrese la ruta del archivo: ")
-                obj = Carga()
-                obj.archivo(self.ruta)
+                
                 print("\nSe cargo la ruta del archivo exitosamente\n")
 
             elif opcion == 2:
                 
                 print("el archivo se esta procesando\n")
+                
+                self.nombre_terreno = input("Ingrese el nombre del terreno a procesar: ")
+                self.obj = Carga()
+                self.obj.archivo(self.ruta, self.nombre_terreno)
+                
                 
                 
             elif opcion == 3:
@@ -48,6 +54,6 @@ class Menu:
                 
             else:
                 print("\nIngresa una opcion correcta \n") 
-#C:\Users\Darkun\Desktop\IPC2\IPC2_Proyecto1_201313965\IPC2_Proyecto1_201313965\robot.xml
+#C:\Users\Darkun\Desktop\IPC2\IPC2_Proyecto1_201313965\IPC2_Proyecto1_201313965\prueba.xml
 obj = Menu()
 obj.menu()

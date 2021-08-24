@@ -1,6 +1,6 @@
 from NodoOrtogonal import Nodo
 
-class ListaDoblementeEnlazada:
+class Lista:
 
     def __init__(self):
         self.primero = None
@@ -11,7 +11,7 @@ class ListaDoblementeEnlazada:
         return self.primero == None
 
     def agregar_final(self,dato, x, y, arriba, abajo, izquierda, derecha):
-        if vacia():
+        if self.vacia():
             self.primero = self.ultimo = Nodo(dato, x, y, arriba, abajo, izquierda, derecha)
         else:
             aux = self.ultimo
@@ -21,7 +21,7 @@ class ListaDoblementeEnlazada:
         self.size +=1 
 
     def agregar_inicio(self, dato, x, y, arriba, abajo, izquierda, derecha):
-        if vacia():
+        if self.vacia():
             self.primero = self.ultimo = Nodo(dato, x, y, arriba, abajo, izquierda, derecha)
         else:
             aux = Nodo(dato, x, y, arriba, abajo, izquierda, derecha)
