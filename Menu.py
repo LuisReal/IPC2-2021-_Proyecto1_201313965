@@ -1,5 +1,5 @@
 from xml.dom import minidom
-from prueba import Carga
+from Archivo import Carga
 
 
 
