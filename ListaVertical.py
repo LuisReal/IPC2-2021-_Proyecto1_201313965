@@ -10,40 +10,73 @@ class Lista:
     def vacia(self):
         return self.primero == None
 
-    def agregar_final(self,dato, x, y, arriba, abajo, izquierda, derecha):
+    def insertar(self,dato,x,y):
         if self.vacia():
-            self.primero = self.ultimo = Nodo(dato, x, y, arriba, abajo, izquierda, derecha)
-        else:
-            aux = self.ultimo
-            self.ultimo = aux.siguiente = Nodo(dato, x, y, arriba, abajo, izquierda, derecha)
-            self.ultimo.anterior = aux
+            self.primero = self.ultimo = Nodo(dato, x, y)
 
-        self.size +=1 
+        elif Nodo(dato,x,y).y < self.primero.y:
+            self.agregar_inicio()
 
-    def agregar_inicio(self, dato, x, y, arriba, abajo, izquierda, derecha):
-        if self.vacia():
-            self.primero = self.ultimo = Nodo(dato, x, y, arriba, abajo, izquierda, derecha)
+        elif Nodo(dato,x,y).y > self.ultimo.y:
+            self.agregar_final()
         else:
-            aux = Nodo(dato, x, y, arriba, abajo, izquierda, derecha)
-            aux.siguiente = self.primero
-            self.primero.anterior = aux
-            self.primero = aux
+            self.agregar_medio()
+
+
+    
+
+    def agregar_inicio(self, dato, x, y):
+        aux = Nodo(dato, x, y)
+        self.primero.arriba = aux
+        aux.abajo = self.primero
+        self.primero = aux
         
-        self.size += 1
+        
+
+    def agregar_medio(self,dato, x, y):
+        temp1 = Nodo(dato, x, y)
+        temp2 = Nodo(dato, x, y)
+
+        temp1 = self.primero
+        while temp1.y < Nodo(dato,x,y).y:
+            temp1 = temp1.abajo
+        
+        temp2 = temp1.arriba
+        temp2.abajo = Nodo(dato, x, y)
+        Nodo(dato,x,y).abajo = temp1
+        Nodo(dato,x,y).arriba = temp2
+        temp1.arriba = Nodo(dato,x,y)
+        
+           
+
+    def agregar_final(self,dato, x, y):
+        aux = Nodo(dato,x,y)
+        self.ultimo.abajo = aux
+        aux.arriba = self.ultimo
+        self.ultimo = aux
+            
+        
 
     def recorrer_inicio(self):
-        aux = self.primero
+        current_ar = self.primero
+        current_ab = self.primero
+        current_ai = self.primero
+        current_ad = self.primero
 
-        while aux:
-            print(aux.dato)
-            aux = aux.siguiente
+        while current_ab: # mientras que aux != None (mientras que el nodo no este vacio)
+            if current_ab.x < current_ab.derecha.x:
+                print('(',current_ab.dato, ' x:' ,current_ab.x, ' y:' ,current_ab.y,')', end = "  =>  ")
+                current_ab = current_ab.abajo
+
+
+        print('\n el tamano de la lista es ', self.size)
     
     def recorrer_fin(self):
-        aux = self.ultimo
+        current = self.ultimo
 
-        while aux:
-            print(aux.dato)
-            aux = aux.anterior
-
+        while current: # mientras que aux != None
+            print('(',current.dato, ' x:' ,current.x, ' y:' ,current.y,')', end = "  =>  ")
+            current = current.arriba
+        print('\n el tamano de la lista es ', self.size)
 
 

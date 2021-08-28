@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-
+from ListaVertical import Lista
 
 class Carga:
     def __init__(self):
@@ -7,6 +7,9 @@ class Carga:
         self.fila = 0
         self.columna = 0
         self.nombre_terreno = ""
+        self.n = 0
+        self.m = 0
+        self.obj = ""
         
    
     def archivo(self, ruta, nombre):
@@ -17,21 +20,15 @@ class Carga:
         doc = ET.parse(xmlfile)
         root = doc.getroot()
 
-        #print(root[0][3].attrib)
-
-        ''' for position in root.iter('posicion'): 
-            print(position.attrib,'  ', position.text) 
-            
-        '''   
 
         for elemento in root.findall('terreno'): # terreno es el nombre de la etiqueta del archivo robot.xml
             
             if elemento.get('nombre') == self.nombre_terreno: # se compara el nombre del terreno que se ingresa con el del archivo xml
-                m = elemento.find('./dimension/m').text #se busca el valor de dimension m solamente para el terreno ingresado
-                print('\n el valor de dimension m (fila) es ', m)
+                self.n = int(elemento.find('./dimension/n').text)
+                print('\n el valor de dimension n (fila) es ', self.n)
 
-                n = elemento.find('./dimension/n').text
-                print('\n el valor de dimension n (columna) es ', n)
+                self.m = int(elemento.find('./dimension/m').text) #se busca el valor de dimension m solamente para el terreno ingresado
+                print('\n el valor de dimension m (columna) es ', self.m)
 
                 posicion_inicio_x = elemento.find('./posicioninicio/x').text
                 print('\n el valor de posicioninicio en x es ', posicion_inicio_x)
@@ -45,37 +42,70 @@ class Carga:
                 posicion_fin_y = elemento.find('./posicionfin/y').text
                 print('\n el valor de posicionfin en y es ', posicion_fin_y)
 
+                self.obj = Lista() # se tiene que agregar afuera del For para que imprima la lista correctamente
+                contador_fila = 1
+                contador_columna = 1
+                for posicion in elemento.findall('posicion'): #se usa elemento.findall para recorrer etiqueta posicion de ese elemento = terreno ingresado     
+                    if int(posicion.get('x')) == 1 :
+                        
+                        x = int(posicion.get('x'))
+                        y = int(posicion.get('y'))
+                        dato = posicion.text
+                        print('\n El valor de x es ',x ,' El valor de y es ',y)
+                        print('\n El valor de la posicion es ', dato)
+                                
+                        self.obj.agregar_final(dato, x, y)     
+                        #print('\n La suma del valor de x es ', suma)
+                    elif int(posicion.get('x')) == 2 :
+                        
+                        x = int(posicion.get('x'))
+                        y = int(posicion.get('y'))
+                        dato = posicion.text
+                        print('\n El valor de x es ',x ,' El valor de y es ',y)
+                        print('\n El valor de la posicion es ', dato)
+                                
+                        self.obj.agregar_final(dato, x, y)
+                    
+                    elif int(posicion.get('x')) == 3 :
+                        
+                        x = int(posicion.get('x'))
+                        y = int(posicion.get('y'))
+                        dato = posicion.text
+                        print('\n El valor de x es ',x ,' El valor de y es ',y)
+                        print('\n El valor de la posicion es ', dato)
+                                
+                        self.obj.agregar_final(dato, x, y)
+
+                    elif int(posicion.get('x')) == 4 :
+                        
+                        x = int(posicion.get('x'))
+                        y = int(posicion.get('y'))
+                        dato = posicion.text
+                        print('\n El valor de x es ',x ,' El valor de y es ',y)
+                        print('\n El valor de la posicion es ', dato)
+                                
+                        self.obj.agregar_final(dato, x, y)
+
+                    elif int(posicion.get('x')) == 5 :
+                        
+                        x = int(posicion.get('x'))
+                        y = int(posicion.get('y'))
+                        dato = posicion.text
+                        print('\n El valor de x es ',x ,' El valor de y es ',y)
+                        print('\n El valor de la posicion es ', dato)
+                                
+                        self.obj.agregar_final(dato, x, y)
+                self.obj.recorrer_inicio()     
+
+            else:
+                print('\nEl nombre del terreno ingresado no existe ')
+        
+        #self.obj.recorrer_inicio()
+        
+        
+
+
             
 
 
         
-'''
-        for dimension_columna in root.findall("./terreno[@nombre='self.nombre_terreno']/dimension/n"):
-            n = dimension_columna.text
-            print('el valor de dimension n (columna) es ',n)
-
-        for posicion_inicio_x in root.findall('./terreno/posicioninicio/x'):
-            x = posicion_inicio_x.text
-            print('el valor de la posicion inicio en x es ',x)
-
-        for posicion_inicio_y in root.findall('./terreno/posicioninicio/y'):
-            y = posicion_inicio_y.text
-            print('el valor de la posicion inicio en y es ',y)
-
-        for posicion_fin_x in root.findall('./terreno/posicionfin/x'):
-            x = posicion_fin_x.text
-            print('el valor de la posicion fin en x es ',x)
-
-        for posicion_fin_y in root.findall('./terreno/posicionfin/y'):
-            y = posicion_fin_y.text
-            print('el valor de la posicion fin en y es ',y)
-'''
-            
-''' 
-            self.fila = int(matriz_prueba.get('n'))
-            self.columna = matriz_prueba.get('m')
-
-            print("\nel nombre de la matriz es: ", nombre, "\nel numero de filas es: ", self.fila,
-            "\nel numero de columnas es: ", self.columna)
-            print("el tamano de la matriz es: ", len(matriz_prueba),"\n") 
-'''
