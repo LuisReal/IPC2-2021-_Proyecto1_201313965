@@ -1,6 +1,6 @@
-from xml.dom import minidom
+
 from Archivo import Carga
-from ListaVertical import Lista
+
 
 class Menu:
 
