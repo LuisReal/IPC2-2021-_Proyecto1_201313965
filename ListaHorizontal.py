@@ -11,17 +11,17 @@ class Lista_H:
         return self.primero == None
 
     def insertar(self,dato,x,y):
-        nodo = Nodo(dato, x, y)
+        nodo_nuevo = Nodo(dato, x, y)
         if self.vacia():
             self.primero = self.ultimo = Nodo(dato, x, y)
 
-        elif nodo.x < self.primero.x:
+        elif nodo_nuevo.x < self.primero.x:
             self.agregar_inicio(dato, x, y)
 
-        elif nodo.x > self.ultimo.x:
+        elif nodo_nuevo.x > self.ultimo.x:
             self.agregar_final(dato, x, y)
-        else:
-            print('Hello World')
+        #else:
+            #print('Hello World')
             #self.agregar_medio()
 
 

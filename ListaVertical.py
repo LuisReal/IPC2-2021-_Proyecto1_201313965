@@ -20,8 +20,8 @@ class Lista_V:
 
         elif nodo_nuevo.y > self.ultimo.y:
             self.agregar_final(dato, x, y)
-        else:
-            print('Hello World')
+        #else:
+            #print('Hello World')
             #self.agregar_medio()
 
 

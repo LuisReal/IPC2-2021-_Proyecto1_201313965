@@ -6,20 +6,25 @@ class ListaCabeceraFila:
     def __init__(self):
         self.primero = None
         self.ultimo = None
+        self.nodo_nuevo_cabecera = None
 
     def vacia(self):
         return self.primero == None
 
     def insertar(self, y):
-        nodo_nuevo = NodoCabeceraFila(y)
+        self.nodo_nuevo_cabecera = NodoCabeceraFila(y)
+        
+
         if self.vacia():
             self.primero = self.ultimo = NodoCabeceraFila(y)
 
-        elif nodo_nuevo.y < self.primero.y:
+        elif self.nodo_nuevo_cabecera.y < self.primero.y:
             self.agregar_inicio(y)
+            self.nodo_nuevo_cabecera.fila
 
-        elif nodo_nuevo.y > self.ultimo.y:
+        elif self.nodo_nuevo_cabecera.y > self.ultimo.y:
             self.agregar_final(y)
+            self.nodo_nuevo_cabecera.fila
         else:
             print('Hello World')
             #self.agregar_medio()
@@ -42,17 +47,17 @@ class ListaCabeceraFila:
         current = self.primero
 
         while current: # mientras que aux != None (mientras que el nodo no este vacio)
-            print(current.y, end = "  =>  ")
+            #print(current.y, end = "  =>  ")
             current = current.siguiente
 
     def buscar(self, y):
         if not self.vacia():
-            aux = NodoCabeceraFila(y)
+            temp = self.nodo_nuevo_cabecera
             temp = self.primero
             while (temp != None):
                 if temp.y == y:
-                    return print('La cabecera existe ',temp.y)
+                    return print('La cabecera fila existe ',temp.y)
                 
                 temp = temp.siguiente
-        print('La cabecera no existe')
+        return None
             
