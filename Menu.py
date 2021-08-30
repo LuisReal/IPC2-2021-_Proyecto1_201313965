@@ -1,6 +1,6 @@
 
 from Archivo import Carga
-
+from MatrizOrtogonal import MatrizOrtogonal
 
 class Menu:
 
@@ -11,13 +11,14 @@ class Menu:
         self.nombre_terreno = ""
         self.obj = ""
         self.obj_Lista = ""
+        self.matriz = ""
 
     def menu(self): 
 
         opcion = 0
         
         while opcion != 6:
-            print("Menu Principal: \n1.Cargar Archivo \n2.Procesar Archivo \n3.Escribir Archivo Salida" 
+            print("\nMenu Principal: \n1.Cargar Archivo \n2.Procesar Archivo \n3.Escribir Archivo Salida" 
             "\n4.Mostrar datos del estudiante"
             "\n5.Generar Grafica"
             "\n6.Salida")
@@ -33,9 +34,12 @@ class Menu:
                 
                 print("el archivo se esta procesando\n")
                 
+                
                 self.nombre_terreno = input("Ingrese el nombre del terreno a procesar: ")
                 self.obj = Carga()
+                
                 self.obj.archivo(self.ruta, self.nombre_terreno)
+                
                 
                 
                 
@@ -54,6 +58,6 @@ class Menu:
                 
             else:
                 print("\nIngresa una opcion correcta \n") 
-#C:\Users\Darkun\Desktop\IPC2\IPC2_Proyecto1_201313965\IPC2_Proyecto1_201313965\prueba.xml
+
 obj = Menu()
 obj.menu()

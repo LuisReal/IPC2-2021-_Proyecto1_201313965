@@ -1,6 +1,6 @@
 class Nodo:
     
-    def __init__(self, dato = None, x = None, y= None):
+    def __init__(self, dato, x, y):
         self.dato= dato
         self.x= x
         self.y= y

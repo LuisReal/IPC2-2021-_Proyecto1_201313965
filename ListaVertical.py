@@ -12,8 +12,8 @@ class Lista_V:
 
     def insertar(self, dato, x, y):
         nodo_nuevo = Nodo(dato, x, y)
-        if self.vacia():
-            self.primero = self.ultimo = Nodo(dato, x, y)
+        if self.vacia() == True:
+            self.primero = self.ultimo = nodo_nuevo
 
         elif nodo_nuevo.y < self.primero.y:
             self.agregar_inicio(dato, x, y)
@@ -54,19 +54,6 @@ class Lista_V:
             print('(',current.dato, ' x:' ,current.x, ' y:' ,current.y,')', end = "  =>  ")
             current = current.arriba
         
-'''
-    def agregar_medio(self,dato, x, y):
-        temp1 = Nodo(dato, x, y)
-        temp2 = Nodo(dato, x, y)
 
-        temp1 = self.primero
-        while temp1.y < Nodo(dato,x,y).y:
-            temp1 = temp1.abajo
-        
-        temp2 = temp1.arriba
-        temp2.abajo = Nodo(dato, x, y)
-        Nodo(dato,x,y).abajo = temp1
-        Nodo(dato,x,y).arriba = temp2
-        temp1.arriba = Nodo(dato,x,y) '''
 
 

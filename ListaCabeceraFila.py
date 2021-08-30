@@ -9,55 +9,59 @@ class ListaCabeceraFila:
         self.nodo_nuevo_cabecera = None
 
     def vacia(self):
-        return self.primero == None
+        return self.primero == None # retorno True o False
 
-    def insertar(self, y):
-        self.nodo_nuevo_cabecera = NodoCabeceraFila(y)
+    def insertar(self, dato, x, y):
+        nodo_nuevo_cabecera = NodoCabeceraFila(dato, x, y)
         
 
         if self.vacia():
-            self.primero = self.ultimo = NodoCabeceraFila(y)
+            self.primero = self.ultimo = nodo_nuevo_cabecera
 
-        elif self.nodo_nuevo_cabecera.y < self.primero.y:
-            self.agregar_inicio(y)
-            self.nodo_nuevo_cabecera.fila
+        else: 
+            if self.nodo_nuevo_cabecera.y < self.primero.y:
+                self.agregar_inicio(dato, x, y)
+            
 
-        elif self.nodo_nuevo_cabecera.y > self.ultimo.y:
-            self.agregar_final(y)
-            self.nodo_nuevo_cabecera.fila
-        else:
-            print('Hello World')
+            elif self.nodo_nuevo_cabecera.y > self.ultimo.y:
+                self.agregar_final(dato, x, y)
+            
+        #else:
+            #print('Hello World')
             #self.agregar_medio()
     
-    def agregar_inicio(self, y):
-        aux = NodoCabeceraFila(y)
+    def agregar_inicio(self, dato, x, y ):
+        aux = NodoCabeceraFila(dato, x, y )
         self.primero.anterior = aux
         aux.siguiente = self.primero
         self.primero = aux
         
 
-    def agregar_final(self, y):
-        aux = NodoCabeceraFila(y)
+    def agregar_final(self, dato, x, y):
+        aux = NodoCabeceraFila(dato, x, y)
         self.ultimo.siguiente = aux
         aux.anterior = self.ultimo
         self.ultimo = aux
        
 
     def recorrer_inicio(self):
-        current = self.primero
+        
+        if not self.vacia():
+            tmp = self.primero
 
-        while current: # mientras que aux != None (mientras que el nodo no este vacio)
-            #print(current.y, end = "  =>  ")
-            current = current.siguiente
+            while tmp is not None: # mientras que aux != None (mientras que el nodo no este vacio)
+                print('dato: ',tmp.dato, '(x,y)',tmp.x,',', tmp.y)
+                tmp = tmp.siguiente
 
     def buscar(self, y):
         if not self.vacia():
-            temp = self.nodo_nuevo_cabecera
+            
             temp = self.primero
-            while (temp != None):
+            while (temp is not None):
                 if temp.y == y:
-                    return print('La cabecera fila existe ',temp.y)
+                    return temp
                 
                 temp = temp.siguiente
-        return None
+        else:
+            return None
             

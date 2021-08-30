@@ -12,22 +12,25 @@ class MatrizOrtogonal:
         self.lista_columna = ListaCabeceraColumna()
 
     def insertar(self, dato, x, y):
-        nodo_nuevo = Nodo(dato, x, y)
+        
 
-        if self.lista_columna.buscar(x) is None:
-            self.lista_columna.insertar(x)
+        if self.lista_columna.buscar(x) is None: # si el NodoCabeceraCOlumna esta vacio
+            self.lista_columna.insertar(dato, x, y) 
+            
         if self.lista_fila.buscar(y) is None:
-            self.lista_fila.insertar(y)
+            self.lista_fila.insertar(dato, x, y)
 
-    
-        print('se inserto ', dato, ' en la posicion ',x,' ',y, end = ' => ')
+        # tenemos que inserta un nodoOrtogonal en la lista vertical y la lista la insertamos en el NodoCabeceraColumna
+        print('se inserto ', dato, ' en la posicion ',x,',',y)
 
-    def llenar(self, dato, x, y):
+    def llenar(self, x, y):
         self.x = x
         self.y = y
+        dato = 1
         
-        for y in range (self.y) :
-            for x in range (self.x) :
-                self.insertar(dato, x, y)
-                
+        for a in range (self.x) :
+            for b in range (self.y) :
+                self.insertar(dato, a+1, b+1)
+                dato += 1
+                    
 
